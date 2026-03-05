@@ -2,7 +2,7 @@ name: On pull request creation
 
 on:
   pull_request:
-    branches: [ master ]
+    branches: [ master, main]
 
 jobs:
     Sample_Run:
