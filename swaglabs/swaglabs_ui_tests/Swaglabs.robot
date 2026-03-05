@@ -11,6 +11,7 @@ Suite Teardown   Close Browser
 Resource         ../../global_resources/global_keywords.robot
 Resource         ../swaglabs_keywords/login_page_keywords.robot
 Resource         ../swaglabs_keywords/inventory_page_keywords.robot
+# Sample
 
 *** Test Cases ***
 SWAGLABS-001: As A User, I Should Be Able To Login Using The Standard User Credentails. 
