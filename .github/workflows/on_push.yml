@@ -33,7 +33,7 @@ jobs:
         - name: Running View Admin Settings Pages  
           run: |
             robot -d Swaglabs -v ENV:STG -v HEADLESS:True -i Swaglabs .
-        - uses: actions/upload-artifact@v3
+        - uses: actions/upload-artifact@v4
           if: ${{ always() }}
           with:
             name: Swaglabs_Results
