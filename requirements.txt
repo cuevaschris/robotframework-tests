@@ -1,0 +1,9 @@
+robotframework
+robotframework-assertion-engine
+robotframework-browser
+robotframework-faker
+robotframework-pabot
+keyboard
+PyAutoGUI
+clipboard
+pyperclip

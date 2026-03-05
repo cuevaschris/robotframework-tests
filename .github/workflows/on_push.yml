@@ -1,0 +1,41 @@
+name: On pull request creation
+
+on:
+  pull_request:
+    branches: [ master ]
+
+jobs:
+    Sample_Run:
+        runs-on: ubuntu-latest
+        steps:
+        - uses: actions/checkout@v2
+        - name: Use Node.js (Version 16)
+          uses: actions/setup-node@v3
+          with:
+            node-version: 16.x
+            cache: 'npm'
+        - name: Install nodejs dependencies
+          env:
+            PLAYWRIGHT_BROWSERS_PATH: 0
+          run: |
+            npm ci
+        - name: Set up Python 3.9
+          uses: actions/setup-python@v4
+          with: 
+            python-version: 3.9
+            cache: 'pip'
+        - name: Install Python Dependencies
+          run: |
+            python -m pip install --upgrade pip
+            pip install wheel
+            pip install -r requirements.txt
+            rfbrowser init
+        - name: Running View Admin Settings Pages  
+          run: |
+            robot -d Swaglabs -v ENV:STG -v HEADLESS:True -i Swaglabs .
+        - uses: actions/upload-artifact@v3
+          if: ${{ always() }}
+          with:
+            name: Swaglabs_Results
+            path: Swaglabs
+    
